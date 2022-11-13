@@ -1,18 +1,17 @@
 import "./App.css";
-import Hello from "./components/Hello";
-import InputSample from "./components/InputSample";
-import Wrapper from "./components/Wrapper";
+import Card from "./components/Card";
 
 function App() {
+  let data = [
+    { name: "jonghun", job: "frontend", id: 1 },
+    { name: "yeonji", job: "backend", id: 2 },
+    { name: "showmethemoney", job: "teacher", id: 3 },
+  ];
   return (
     <>
-      <Wrapper>
-        <Hello color="red" name="JungJongHun!"></Hello>
-        <Hello></Hello>
-        <Hello color="blue"></Hello>
-        <Hello name="JJH"></Hello>
-      </Wrapper>
-      <InputSample></InputSample>
+      {data.map((v) => {
+        return <Card data={v} key={v.id}></Card>;
+      })}
     </>
   );
 }
