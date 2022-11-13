@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 function InputSample(props) {
   let [input, setInput] = useState({ name: "", nickName: "" });
 
   let onClickReset = (e) => {
     setInput({ name: "", nickName: "" });
+    nameInput.current.focus();
   };
 
   let getValue = (e) => {
@@ -12,6 +13,7 @@ function InputSample(props) {
     setInput({ ...input, [name]: value });
   };
 
+  let nameInput = useRef();
   return (
     <div>
       <input
@@ -19,6 +21,7 @@ function InputSample(props) {
         placeholder="name"
         name="name"
         value={input.name}
+        ref={nameInput}
       />
       <input
         onChange={getValue}
