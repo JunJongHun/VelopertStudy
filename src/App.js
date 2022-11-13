@@ -1,5 +1,6 @@
 import "./App.css";
 import Hello from "./components/Hello";
+import InputSample from "./components/InputSample";
 import Wrapper from "./components/Wrapper";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Hello color="blue"></Hello>
         <Hello name="JJH"></Hello>
       </Wrapper>
+      <InputSample></InputSample>
     </>
   );
 }
