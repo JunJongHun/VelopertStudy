@@ -5,7 +5,7 @@ function CardList(props) {
   return (
     <div>
       {props.data.map((v) => (
-        <Card data={v} key={v.id}></Card>
+        <Card data={v} key={v.id} onDelete={props.onDelete}></Card>
       ))}
     </div>
   );
