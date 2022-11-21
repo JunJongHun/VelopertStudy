@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import User from "./User";
 
 function UserList(props) {
@@ -6,6 +6,20 @@ function UserList(props) {
     { name: "전종훈", email: "minn4072@gmail.com", toggle: false, id: 100 },
     { name: "최연지", email: "minn123@gmail.com", toggle: true, id: 101 },
   ]);
+
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+  });
+
+  const { username, email } = inputs;
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
   let id = useRef(102);
 
@@ -44,6 +58,12 @@ function UserList(props) {
     setUsers(copy);
   };
 
+  function countActiveUsers(users) {
+    console.log("활성 사용자 수를 세는중...");
+    return users.filter((user) => user.toggle).length;
+  }
+
+  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <div>
       {users.map((user) => (
@@ -55,6 +75,8 @@ function UserList(props) {
         ></User>
       ))}
       <button onClick={onCreate}>추가</button>
+      <div>활성사용자 수 : {count}</div>
+      <input name="username" onChange={onChange}></input>
     </div>
   );
 }
