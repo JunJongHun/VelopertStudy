@@ -1,37 +1,24 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-function InputSample(props) {
-  let [input, setInput] = useState({ name: "", nickName: "" });
-
-  let onClickReset = (e) => {
-    setInput({ name: "", nickName: "" });
-    nameInput.current.focus();
-  };
-
-  let getValue = (e) => {
-    let { value, name } = e.target;
-    setInput({ ...input, [name]: value });
-  };
-
-  let nameInput = useRef();
+function InputSample({ input, updateInput, onReset, onCreate }) {
   return (
     <div>
       <input
-        onChange={getValue}
-        placeholder="name"
+        onChange={updateInput}
+        type="text"
+        placeholder="이름"
         name="name"
         value={input.name}
-        ref={nameInput}
       />
       <input
-        onChange={getValue}
-        placeholder="nickName"
-        name="nickName"
-        value={input.nickName}
+        onChange={updateInput}
+        type="text"
+        placeholder="이메일"
+        name="email"
+        value={input.email}
       />
-      <button onClick={onClickReset}>RESET</button>
-      <div>name = {input.name}</div>
-      <div>nickName = {input.nickName}</div>
+      <button onClick={onCreate}>생성</button>
+      <button onClick={onReset}>리셋</button>
     </div>
   );
 }

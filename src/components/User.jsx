@@ -1,33 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-function User({ user, onToggle, onDelete }) {
-  let changeColor = () => {};
-
-  useEffect(() => {
-    console.log("자식 컴포넌트 마운트");
-    return () => {
-      console.log("자식 컴포넌트 언 마운트");
-    };
-  });
+function User({ user: { username, email, id }, onDelete }) {
   return (
     <div>
-      <div
-        onClick={() => {
-          onToggle(user.id);
-        }}
-        style={{ color: user.toggle ? "red" : "blue" }}
-      >
-        {user.name} {user.id}
-      </div>
-      <div>{user.email}</div>
-      <button>색 바꾸기</button>
-      <button
-        onClick={() => {
-          onDelete(user.id);
-        }}
-      >
-        삭제
-      </button>
+      <span>{username}</span>
+      <span> ---- </span>
+      <span>{email}</span>
+      <span> --- {id}</span>
+      <span>
+        <button
+          onClick={() => {
+            onDelete(id);
+          }}
+        >
+          삭제
+        </button>
+      </span>
     </div>
   );
 }
