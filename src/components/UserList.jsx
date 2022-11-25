@@ -1,13 +1,18 @@
 import React from "react";
 import User from "./User";
-function UserList({ users, onDelete }) {
+function UserList({ users, onDelete, onToggle }) {
   return (
     <div>
       {users.map((user) => (
-        <User key={user.id} user={user} onDelete={onDelete}></User>
+        <User
+          key={user.id}
+          onToggle={onToggle}
+          user={user}
+          onDelete={onDelete}
+        ></User>
       ))}
     </div>
   );
 }
 
-export default UserList;
+export default React.memo(UserList);
