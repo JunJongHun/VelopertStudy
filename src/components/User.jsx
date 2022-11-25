@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import UserDispatch from "../context/UserDispatch";
 
-function User({ user: { username, email, id, active }, onDelete, onToggle }) {
+function User({ user: { username, email, id, active } }) {
+  let dispatch = useContext(UserDispatch);
   useEffect(() => {
     console.log(`User ${id} 컴포넌트 마운트`);
     return () => {
@@ -10,10 +12,10 @@ function User({ user: { username, email, id, active }, onDelete, onToggle }) {
   return (
     <div>
       <span
-        style={{ color: active ? "blue" : "black" }}
         onClick={() => {
-          onToggle(id);
+          dispatch({ type: "ON_TOGGLE", id: id });
         }}
+        style={{ color: active ? "blue" : "black" }}
       >
         {username}
       </span>
@@ -23,9 +25,10 @@ function User({ user: { username, email, id, active }, onDelete, onToggle }) {
       <span>
         <button
           onClick={() => {
-            onDelete(id);
+            dispatch({ type: "ON_REMOVE", id: id });
           }}
         >
+          {" "}
           삭제
         </button>
       </span>

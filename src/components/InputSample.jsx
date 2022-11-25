@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputSample({ input, updateInput, onReset, onCreate }) {
+function InputSample({ state, updateInput, onCreate, onReset }) {
   return (
     <div>
       <input
@@ -8,14 +8,14 @@ function InputSample({ input, updateInput, onReset, onCreate }) {
         type="text"
         placeholder="이름"
         name="name"
-        value={input.name}
+        value={state.input.name}
       />
       <input
         onChange={updateInput}
         type="text"
         placeholder="이메일"
         name="email"
-        value={input.email}
+        value={state.input.email}
       />
       <button onClick={onCreate}>생성</button>
       <button onClick={onReset}>리셋</button>

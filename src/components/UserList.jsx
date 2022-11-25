@@ -1,15 +1,10 @@
 import React from "react";
 import User from "./User";
-function UserList({ users, onDelete, onToggle }) {
+function UserList({ state }) {
   return (
     <div>
-      {users.map((user) => (
-        <User
-          key={user.id}
-          onToggle={onToggle}
-          user={user}
-          onDelete={onDelete}
-        ></User>
+      {state.users.map((user) => (
+        <User key={user.id} user={user}></User>
       ))}
     </div>
   );
