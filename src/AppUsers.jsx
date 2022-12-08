@@ -1,4 +1,5 @@
 import React from "react";
+import Btn from "./components/Btn";
 import Users from "./Users";
 
 function AppUsers(props) {
@@ -12,7 +13,9 @@ function AppUsers(props) {
   };
   return (
     <div>
-      <Users users={users}></Users>
+      <Users users={users} onToggle={onToggle}></Users>
+      <Btn></Btn>
+      <Btn size={"L"}></Btn>
     </div>
   );
 }
